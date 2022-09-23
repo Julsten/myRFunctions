@@ -9,7 +9,7 @@ plots2ppt(plot, doc, path)
 \arguments{
 \item{plot}{a ggplot object}
 
-\item{doc}{a rpptx object from the package officer}
+\item{doc}{a rpptx object from the package officer, doc <- officer::read_pptx()}
 
 \item{path}{A path to write the file}
 }
@@ -18,4 +18,13 @@ a pptx file
 }
 \description{
 takes a ggplot object and writes it into a power point presentation
+}
+\examples{
+\dontrun{
+library(ggplot2)
+data(mpg)
+carplot <- ggplot(data=mpg) + geom_boxplot(aes(x=manufacturer, y=displ))
+doc <- officer::read_pptx()
+plots2ppt(carplot, doc, path="my_presentation.pptx")
+}
 }
